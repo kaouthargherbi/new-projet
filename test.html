@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test Fetch</title>
+</head>
+
+<body>
+    <button onclick="sendTest()">Send Test</button>
+
+    <script>
+        function sendTest() {
+            fetch("https://corsproxy.io/?https://script.google.com/macros/s/AKfycbyBNNhZkToKXXuPXQZGsdFxbT6r7XMmJGn2EZOknTybERe3fW62FAjqsfdswiWQy8egaQ/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: "Test User",
+                    email: "test@example.com",
+                    password: "123456",
+                    phone: "+213000000000"
+                })
+            })
+                .then(res => res.text())
+                .then(data => alert("Response: " + data))
+                .catch(err => alert("Error: " + err));
+        }
+    </script>
+</body>
+
+</html>
